@@ -1,0 +1,30 @@
+# RB101-RB109 Lesson 02
+# Assignment: Calculator Bonus Features - YAML Configuration File
+# Thurs. 08/27/20
+
+# Parse .yml using the YAML module that comes w/ the Ruby standard Library
+en: 
+  welcome: "Welcome to Calculator! Enter your name: "
+  greeting: "Hi, "
+  num1: "What's the first number? \n"
+  num2: "What's the second number? \n"
+  valid_name: "Make sure to enter a valid name."
+  valid_number: "Hmm...that doesn't look like a valid number. \n"
+  operator_prompt: "What operation would you like to perform?\n 1) Add \n 2) Subtract \n 3) Multiply \n 4) Divide \n" 
+  valid_operator: "Must choose 1, 2, 3, or 4. \n"
+  calculating: " the two numbers...\n"
+  goodbye: "Thank you for using Calculator. Goodbye!\n"
+  result: "The result is "
+  calc_again: "Do you want to perform another calculation? \n"
+es: 
+  welcome: "Bienvenido a la Calculadora! Entre su nombre: "
+  greeting: "Hola, "
+  num1: "Cual es el primer numero?"
+  num2: "Cual es el segundo numero?"
+  valid_name: "Asegurese de entrar un nombre valido."
+  valid_number: "Hmm...eso no parece un numero valido."
+  valid_operator: "Tiene que entrar 1, 2, 3, o 4."
+  calculating: " los dos numeros..."
+  goodbye: "Gracias por usar Calculadora. Hasta luego!"
+  result: "Es resultado es "
+  calc_again: "Quieres repetir otra calculo?"
