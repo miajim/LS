@@ -1,0 +1,25 @@
+# RB101-RB109 Lesson 2
+# Rock Paper Scissors: Bonus Features
+# Wed. 09/02/20
+
+begin: "Begin?(y/n): "
+continue: "Continue?(y/n): "
+dashes: "-------------------------------------------------------------------"
+game_continued: "Game will continue!"
+game_ended: "You've ended the game :(  Goodbye!"
+goodbye: "Thank you for playing Rock-Paper-Scissors-Lizard-Spock. Goodbye! \n ****************** Live long & prosper! ******************"
+how_to_quit: "You can quit the game at any time when asked for an input by typing 'q' or 'quit'."
+loading: "Loading game..."
+not_valid_input: "That's not a valid input; try again."
+quit: "Do you really want to quit?(y/n): "
+read_rules: "Do you want to read the rules first?(y/n): "
+request_user_input: "Choose one: rock (r), paper (p), scissors (c), lizard (l), spock (s).\n Your choice: "
+user_wins: "YOU ARE THE GRAND WINNER!!!"
+computer_wins: "Computer is the grand winner. Better luck next time!"
+welcome: 'Welcome to Rock-Paper-Scissors-Lizard-Spock!'
+
+
+
+
+
+
