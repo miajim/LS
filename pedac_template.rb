@@ -10,7 +10,7 @@ PEDAC Template
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 UNDERSTAND THE PROBLEM
 Inputs
-Outputs 
+Outputs
 Rules/Implicit Requirements
 Clarifying Questions
 Mental Model (optional)
