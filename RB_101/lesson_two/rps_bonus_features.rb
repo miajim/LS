@@ -1,6 +1,6 @@
 # RB101-RB109 Lesson 2
 # Rock Paper Scissors: Bonus Features
-# Wed. 09/02/20
+# Thurs. 09/03/20
 # Constants and methods are organized alphabetically by name.
 
 # CONSTANTS -------------------------------------------------------------------
@@ -45,6 +45,18 @@ VALID_CHOICES = {
 }
 
 # METHODS -------------------------------------------------------------------
+# Ask the user if they want to start the game
+def begin_game?
+  loop do
+    begin_choice = valid_yes_no_quit(messages("begin"))
+    if begin_choice == 'y'
+      break
+    elsif begin_choice =~ /[nq]/
+      quit_game()
+    end
+  end
+end
+
 # Ask the user if they want to continue playing
 def continue
   quit_game() if valid_yes_no_quit(messages("continue")) =~ /[nq]/
@@ -54,9 +66,9 @@ end
 # Display the "grand winner" of the entire game
 def display_grand_winner(scores_hash)
   if scores_hash[:player_score] > scores_hash[:computer_score]
-    prompt(messages("user_wins"))
+    prompt(messages("user_wins_all"))
   else
-    prompt(messages("computer_wins"))
+    prompt(messages("computer_wins_all"))
   end
 end
 
@@ -82,13 +94,15 @@ def let_user_choose
   loop do
     prompt(messages("request_user_input"), false)
     choice = Kernel.gets().chomp().downcase()
-    if VALID_CHOICES.key?(choice) || VALID_CHOICES.value?(choice)
+    if VALID_CHOICES.key?(choice)
       choice = VALID_CHOICES[choice]
+      break
+    elsif VALID_CHOICES.value?(choice)
       break
     elsif (choice == 'q') || (choice == 'quit')
       quit_game()
     else
-      prompt("That's not a valid choice.")
+      prompt(messages("not_valid_input"))
     end
   end
   choice
@@ -118,14 +132,18 @@ def quit_game
   end
 end
 
-# Return the valid choice that was input
-def return_choice(valid_choice)
-  if valid_choice.start_with?('y')
-    'y'
-  elsif valid_choice.start_with?('n')
-    'n'
-  else # can only be 'q' or 'quit'
-    'q'
+# Ask the user if they want to see the rules
+def read_rules?
+  loop do
+    rules_choice = valid_yes_no_quit(messages("read_rules"))
+    if rules_choice == 'y'
+      puts RULES
+      break
+    elsif rules_choice == 'q'
+      quit_game()
+    else # otherwise 'n'
+      break
+    end
   end
 end
 
@@ -149,7 +167,7 @@ def valid_yes_no_quit(question)
     prompt(messages("not_valid_input"))
     pause()
   end
-  return_choice(input)
+  input.chr
 end
 
 # Return true if the first argument wins, otherwise returns false
@@ -169,17 +187,18 @@ scores = {
 
 # Welcome user to the game and ask if they want to see the rules
 prompt(messages("welcome"))
-puts RULES if valid_yes_no_quit(messages("read_rules")) == 'y'
+read_rules?()
 
 # Reiterate conditions of the game and ask if the user wants to begin playing
-prompt("Game will continue until you or the computer reaches a score of
-#{NUM_WINS}.")
+prompt(messages("win_conditions") + "#{NUM_WINS}.")
 pause()
-quit_game if valid_yes_no_quit(messages("begin")) == 'n'
+begin_game?()
+
+# Explain how to quit the game at any time and "load" the game.
 prompt(messages("how_to_quit"))
 prompt(messages("loading"))
 pause(2.25)
-system('clear')
+system('clear') # clears the screen before starting rounds
 
 prompt(messages("dashes")) # formatting
 
