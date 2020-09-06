@@ -1,6 +1,6 @@
 # RB101-RB109 Lesson 2
 # Rock Paper Scissors: Bonus Features
-# Thurs. 09/03/20
+# Sun. 09/06/20
 # Keys are organized alphabetically by name.
 
 begin: "Begin?(y/n): "
@@ -16,6 +16,16 @@ not_valid_input: "That's not a valid input; try again."
 quit: "Do you really want to quit?(y/n/q): "
 read_rules: "Do you want to read the rules first?(y/n): "
 request_user_input: "Choose one: rock (r), paper (p), scissors (c), lizard (l), spock (s).\n Your choice: "
+rules: " Scissors cuts Paper \n
+  Paper covers Rock \n
+  Rock crushes Lizard \n
+  Lizard poisons Spock \n
+  Spock smashes Scissors \n
+  Scissors decapitates Lizard \n
+  Lizard eats Paper \n
+  Paper disproves Spock \n
+  Spock vaporizes Rock \n
+  Rock crushes Scissors \n"
 user_wins_all: "YOU ARE THE GRAND WINNER!!!"
 welcome: 'Welcome to Rock-Paper-Scissors-Lizard-Spock!'
 win_conditions: "Game will continue until you or the computer reaches a score of: "
