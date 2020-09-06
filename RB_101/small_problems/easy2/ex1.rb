@@ -1,7 +1,8 @@
 # RB101-RB109 Small Problems
 # Easy 2 - Problem 1: How old is Teddy?
-# DATE 08/30/20
+# Sun. 08/30/20
 
+=begin
 # PROBLEM STATEMENT
 
 # Build a program that randomly generates and prints Teddy's age.
@@ -11,7 +12,10 @@
 
 # Teddy is 69 years old!
 
-=begin
+# Further Exploration
+Modify this program to ask for a name, and then print the age for that person.
+For an extra challenge, use "Teddy" as the name if no name is entered.
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 PEDAC Template
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -44,12 +48,21 @@ Use string interpolation to output the string with the randomly generated number
 =end
 
 # CODE
-loop do
-  puts "Finding Teddy's age..."
-  Kernel.sleep(1.0)
-  age = Random.rand(20..200)
-  puts "Teddy is #{age} years old!"
-  puts "Repeat finding Teddy's age?(y/n) "
-  repeat = Kernel.gets().chomp()
-  break unless repeat.match(/^y/i)
-end
+# loop do
+#   puts "Finding Teddy's age..."
+#   Kernel.sleep(1.0)
+#   age = Random.rand(20..200)
+#   puts "Teddy is #{age} years old!"
+#   puts "Repeat finding Teddy's age?(y/n) "
+#   repeat = Kernel.gets().chomp()
+#   break unless repeat.match(/^y/i)
+# end
+
+# Further Exploration
+age = Random.rand(20..200)
+
+print "Please input your name: "
+name = gets.chomp
+name = name.empty? ? "Teddy" : name
+
+puts "#{name} is #{age} years old!"
