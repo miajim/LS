@@ -1,0 +1,14 @@
+# RB101-RB109 Lesson 06
+# Assignment: Tic Tac Toe Bonus Features - YAML Configuration File
+# Tues. 09/29/20
+
+  choose_first_move: "Do you want to make the first move? (y/n): "
+  continue: "Continue? (y/n): "
+  explain_spaces: "The initial board will indicate the numbering of the spaces."
+  goodbye: "Thanks for playing Tic-Tac-Toe. Goodbye!"
+  invalid_answer: "That's not a valid answer - try again."
+  next_round: "The next round is starting in 3 seconds..."
+  overall_winner: "The overall winner is: %{winner}"
+  play_again: "Play again? (y/n): "
+  rules: "The game will continue until a player reaches %{num_wins}."
+  welcome: "Welcome to Tic-Tac-Toe!"
