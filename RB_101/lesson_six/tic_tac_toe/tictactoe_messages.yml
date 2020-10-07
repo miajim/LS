@@ -1,6 +1,6 @@
 # RB101-RB109 Lesson 06
 # Assignment: Tic Tac Toe Bonus Features - YAML Configuration File
-# Tues. 09/29/20
+# Wed. 10/07/20
 
   choose_first_move: "Do you want to make the first move? (y/n): "
   continue: "Continue? (y/n): "

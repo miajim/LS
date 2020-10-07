@@ -1,6 +1,6 @@
 # RB101-RB109 Lesson 6
 # Tic-Tac-Toe: Bonus Features
-# Tues. 09/29/20
+# Wed. 10/07/20
 # Constants and methods are organized alphabetically by name.
 
 # LOAD GEMS/LIBRARIES-----------------------------------------------------------
