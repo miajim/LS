@@ -10,5 +10,6 @@
   next_round: "The next round is starting in 3 seconds..."
   overall_winner: "The overall winner is: %{winner}"
   play_again: "Play again? (y/n): "
+  quit_game: "You've quit the game. Goodbye!"
   rules: "The game will continue until a player reaches %{num_wins}."
   welcome: "Welcome to Tic-Tac-Toe!"
