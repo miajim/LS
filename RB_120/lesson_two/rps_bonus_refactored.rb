@@ -98,6 +98,7 @@ class Human < Player
   end
 
   private
+
   def translate_choice(choice)
     case choice
     when "rock", "r" then Rock.new
