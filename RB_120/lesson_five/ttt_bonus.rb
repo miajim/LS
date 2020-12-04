@@ -29,24 +29,20 @@ class Board
   end
   # rubocop:enable Metrics/AbcSize
 
-  def []=(key, marker)
-    @squares[key].marker = marker
-  end
-
-  def unmarked_keys
-    @squares.keys.select { |key| @squares[key].unmarked? }
-  end
-
-  def valid_key?(key)
-    (key.to_i.to_s == key) && unmarked_keys.include?(key.to_i)
-  end
-
   def find_at_risk_squares(marker)
     offense, defense = sort_by_offense_defense(marker)
     return offense.sample unless offense.empty?
     return defense.sample unless defense.empty?
     return MIDDLE_SQ if @squares[MIDDLE_SQ].unmarked?
     unmarked_keys.sample
+  end
+
+  def full?
+    unmarked_keys.empty?
+  end
+
+  def reset
+    (1..9).each { |key| @squares[key] = Square.new }
   end
 
   def sort_by_offense_defense(marker)
@@ -64,8 +60,12 @@ class Board
     return offense, defense
   end
 
-  def full?
-    unmarked_keys.empty?
+  def unmarked_keys
+    @squares.keys.select { |key| @squares[key].unmarked? }
+  end
+
+  def valid_key?(key)
+    (key.to_i.to_s == key) && unmarked_keys.include?(key.to_i)
   end
 
   def winning_marker
@@ -78,8 +78,8 @@ class Board
     nil
   end
 
-  def reset
-    (1..9).each { |key| @squares[key] = Square.new }
+  def []=(key, marker)
+    @squares[key].marker = marker
   end
 end
 
@@ -238,7 +238,7 @@ class TTTGame
     answer = nil
     loop do
       puts "The computer is using #{COMPUTER_MARKER} as its game marker."
-      print "Pick a different single-character game marker: "
+      print "Please pick a different single-character game marker: "
       answer = gets.chomp.strip
       break if answer.size == 1 && answer != COMPUTER_MARKER
       puts "Sorry, that's not a valid choice. Try again."
