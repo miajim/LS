@@ -1,7 +1,7 @@
 =begin
 RB120-RB129 Lesson 5
 Assignment: OOP TTT Bonus Features (Refactored Based on TA Comments)
-Wed. 12/9/20
+Thurs. 12/10/20
 =end
 
 class Board
@@ -15,7 +15,7 @@ class Board
     reset
   end
 
-  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def draw
     puts "     |     |"
     puts "  #{@squares[1]}  |  #{@squares[2]}  |  #{@squares[3]}  "
@@ -29,10 +29,11 @@ class Board
     puts "  #{@squares[7]}  |  #{@squares[8]}  |  #{@squares[9]}  "
     puts "     |     |"
   end
-  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
-  def find_at_risk_squares(marker)
-    offense, defense = sort_by_offense_defense(marker)
+  def find_at_risk_squares(computer_marker, human_marker)
+    offense = logical_open_squares(computer_marker)
+    defense = logical_open_squares(human_marker)
     return offense.sample unless offense.empty?
     return defense.sample unless defense.empty?
     return MIDDLE_SQ if @squares[MIDDLE_SQ].unmarked?
@@ -57,9 +58,9 @@ class Board
 
   def winning_marker
     WINNING_LINES.each do |line|
-      squares = @squares.values_at(*line)
-      next if squares.any?(&:unmarked?)
-      markers = squares.map(&:marker)
+      square_values = @squares.values_at(*line)
+      next if square_values.any?(&:unmarked?)
+      markers = square_values.map(&:marker)
       return markers.first if markers.uniq.size == 1
     end
     nil
@@ -71,19 +72,16 @@ class Board
 
   private
 
-  def sort_by_offense_defense(marker)
-    offense = []
-    defense = []
+  def logical_open_squares(marker)
+    options = []
     WINNING_LINES.each do |line|
-      squares = @squares.values_at(*line)
-      _, marked_squares = squares.partition(&:unmarked?)
-      line_markers = marked_squares.map(&:marker)
-      if marked_squares.size == 2 && line_markers.uniq.size == 1
-        unmarked_index = line[squares.index(&:unmarked?)]
-        (line_markers.all?(marker) ? offense : defense) << unmarked_index
+      if line.one? { |num| @squares[num].unmarked? }
+        marked_squares = @squares.values_at(*line).reject(&:unmarked?)
+        unmarked_index = line[@squares.values_at(*line).index(&:unmarked?)]
+        options << unmarked_index if marked_squares.map(&:marker).all?(marker)
       end
     end
-    return offense, defense
+    options
   end
 end
 
@@ -146,7 +144,8 @@ class TTTGame
   end
 
   def computer_moves
-    board[board.find_at_risk_squares(computer.marker)] = computer.marker
+    square_number = board.find_at_risk_squares(computer.marker, human.marker)
+    board[square_number] = computer.marker
   end
 
   def current_player_moves
