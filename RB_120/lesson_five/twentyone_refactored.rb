@@ -185,10 +185,9 @@ class Game
     puts "Welcome to Twenty-One!"
   end
 
-  def display_winner
+  def display_winner(winner)
     sleep(1.25)
     puts ""
-    winner = determine_winner
     case winner
     when Dealer then puts "#{dealer.name} won the game :("
     when Player then puts "#{player.name.upcase} WON THE GAME!"
@@ -229,7 +228,7 @@ class Game
   end
 
   def show_result
-    display_winner
+    display_winner(determine_winner)
     final_results = <<~MSG
 
     ----------------- FINAL RESULTS -----------------
