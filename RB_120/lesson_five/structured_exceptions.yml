@@ -1,0 +1,10 @@
+--- !ruby/object:BloggerException
+file: ttt_bonus.rb
+line: '201'
+cause: gets'
+message: ''
+type: Interrupt
+description: Check out https://ruby-doc.org/core-2.7.0/Exception.html for more information.
+scope: ttt_bonus
+time: 07:43:16 AM
+date: 02/26/21
