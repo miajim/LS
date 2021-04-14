@@ -2,6 +2,7 @@
 OOP TTT Bonus Features
 Fri. 12/4/20
 =end
+require 'ruby_blogger'
 
 class Board
   MIDDLE_SQ = 5
